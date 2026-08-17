@@ -21,6 +21,16 @@
   object-fit: cover;
   object-position: center center;
   user-select: none;
+  /* Start blurred and slightly scaled up */
+  filter: blur(10px);
+  transform: scale(1.05);
+  transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.artwork.loaded {
+  /* Transition to sharp and normal scale when loaded */
+  filter: blur(0);
+  transform: scale(1);
 }
 
 /* Cinematic scrim — heavier at bottom so player pops */

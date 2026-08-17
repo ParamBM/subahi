@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { AudioPlayer } from './components/AudioPlayer'
 import { ShareButton } from './components/ShareButton'
 import { playlist } from './data/playlist'
@@ -13,6 +14,7 @@ function formatPresence(count) {
 }
 
 function App() {
+  const [imageLoaded, setImageLoaded] = useState(false)
   const presenceCount = usePresence('subahi-morning')
   const clock = useClock()
 
@@ -20,9 +22,10 @@ function App() {
     <main className="subahi">
       {/* Full-bleed artwork */}
       <img
-        className="artwork"
+        className={`artwork ${imageLoaded ? 'loaded' : ''}`}
         src="/background.webp"
         alt="A warm painted street scene from an Indian morning"
+        onLoad={() => setImageLoaded(true)}
       />
 
       {/* Gradient scrim */}
