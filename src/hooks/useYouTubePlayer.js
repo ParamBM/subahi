@@ -18,9 +18,7 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
     callbacksRef.current = { onEnded, onError }
   }, [onEnded, onError])
 
-  useEffect(() => {
-    trackRef.current = track
-  }, [track])
+
 
   useEffect(() => {
     if (!enabled) return undefined
@@ -89,11 +87,6 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
   }, [enabled, mountId])
 
   useEffect(() => {
-    if (!isReady || !playerRef.current || !track?.youtubeId) return
-    playerRef.current.loadVideoById(track.youtubeId)
-  }, [isReady, track])
-
-  useEffect(() => {
     if (!isReady) return undefined
     const interval = window.setInterval(() => {
       const player = playerRef.current
@@ -107,6 +100,7 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
 
   const play = useCallback(() => playerRef.current?.playVideo(), [])
   const pause = useCallback(() => playerRef.current?.pauseVideo(), [])
+  const loadTrack = useCallback((youtubeId) => playerRef.current?.loadVideoById(youtubeId), [])
 
-  return { currentTime, duration, hasError, isBuffering, isPlaying, isReady, pause, play }
+  return { currentTime, duration, hasError, isBuffering, isPlaying, isReady, pause, play, loadTrack }
 }

@@ -57,14 +57,7 @@ export function AudioPlayer({ tracks }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const track = tracks[currentIndex]
 
-  const moveTrack = useCallback(
-    (direction) => {
-      setCurrentIndex((i) => (i + direction + tracks.length) % tracks.length)
-    },
-    [tracks.length],
-  )
-
-  const { currentTime, duration, hasError, isBuffering, isPlaying, isReady, pause, play } =
+  const { currentTime, duration, hasError, isBuffering, isPlaying, isReady, pause, play, loadTrack } =
     useYouTubePlayer({
       enabled: true,
       mountId: PLAYER_ID,
@@ -72,6 +65,17 @@ export function AudioPlayer({ tracks }) {
       onError: () => moveTrack(1),
       track,
     })
+
+  const moveTrack = useCallback(
+    (direction) => {
+      setCurrentIndex((i) => {
+        const nextIdx = (i + direction + tracks.length) % tracks.length
+        loadTrack(tracks[nextIdx].youtubeId)
+        return nextIdx
+      })
+    },
+    [tracks, loadTrack],
+  )
 
   const togglePlayback = () => {
     isPlaying ? pause() : play()
