@@ -6,10 +6,10 @@ export const playlist = [
     youtubeId: '-kI769Xigik',
   },
   {
-    id: 'bheegi-si-bhaagi-si',
-    title: 'Bheegi Si Bhaagi Si',
-    artist: 'Mohit Chauhan, Antara Mitra',
-    youtubeId: 'yHWPO9DDnsk',
+    id: 'allah-maaf-kare',
+    title: 'Allah Maaf Kare',
+    artist: 'Sonu Nigam, Shilpa Rao',
+    youtubeId: 'wfFffQxQMlU',
   },
   {
     id: 'tum-mile',

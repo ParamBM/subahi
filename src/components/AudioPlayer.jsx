@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useYouTubePlayer } from '../hooks/useYouTubePlayer'
 
 const PLAYER_ID = 'subahi-audio-source'
@@ -78,6 +78,34 @@ export function AudioPlayer({ tracks }) {
   const togglePlayback = () => {
     isPlaying ? pause() : play()
   }
+
+  // Integrate with OS-level Media Session (Lock Screen & Notification Controls)
+  useEffect(() => {
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new window.MediaMetadata({
+        title: track.title,
+        artist: track.artist,
+        album: 'Subahi',
+        artwork: [
+          {
+            src: `https://img.youtube.com/vi/${track.youtubeId}/mqdefault.jpg`,
+            sizes: '320x180',
+            type: 'image/jpeg',
+          },
+          {
+            src: `https://img.youtube.com/vi/${track.youtubeId}/maxresdefault.jpg`,
+            sizes: '1280x720',
+            type: 'image/jpeg',
+          },
+        ],
+      })
+
+      navigator.mediaSession.setActionHandler('play', () => play())
+      navigator.mediaSession.setActionHandler('pause', () => pause())
+      navigator.mediaSession.setActionHandler('previoustrack', () => moveTrack(-1))
+      navigator.mediaSession.setActionHandler('nexttrack', () => moveTrack(1))
+    }
+  }, [track, play, pause, moveTrack])
 
   const progress = duration ? Math.min((currentTime / duration) * 100, 100) : 0
 
