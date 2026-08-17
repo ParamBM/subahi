@@ -42,23 +42,31 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
               event.target.cueVideoById(trackRef.current.youtubeId)
             },
             onStateChange: (event) => {
-              if (event.data === PLAYER_STATES.PLAYING) {
+              // 1 = PLAYING
+              if (event.data === 1) {
                 setHasError(false)
                 setIsPlaying(true)
                 setIsBuffering(false)
               }
-              if (event.data === PLAYER_STATES.PAUSED) {
+              // 2 = PAUSED
+              if (event.data === 2) {
                 setIsPlaying(false)
                 setIsBuffering(false)
               }
-              if (event.data === PLAYER_STATES.BUFFERING) {
+              // 3 = BUFFERING
+              if (event.data === 3) {
                 setIsPlaying(false)
                 setIsBuffering(true)
               }
-              if (event.data === PLAYER_STATES.ENDED) {
+              // 0 = ENDED
+              if (event.data === 0) {
                 setIsPlaying(false)
                 setIsBuffering(false)
                 callbacksRef.current.onEnded()
+              }
+              // 5 = CUED or -1 = UNSTARTED
+              if (event.data === 5 || event.data === -1) {
+                setIsBuffering(false)
               }
             },
             onError: () => {
