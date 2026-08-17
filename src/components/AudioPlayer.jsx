@@ -118,7 +118,7 @@ export function AudioPlayer({ tracks }) {
       <Disc
         youtubeId={track.youtubeId}
         isPlaying={isPlaying}
-        isBuffering={isBuffering}
+        isBuffering={isBuffering || !isReady}
         title={track.title}
       />
 
@@ -156,6 +156,7 @@ export function AudioPlayer({ tracks }) {
         <button
           aria-label={isPlaying ? 'Pause' : 'Play'}
           className="main-control"
+          disabled={!isReady}
           onClick={togglePlayback}
           type="button"
         >
