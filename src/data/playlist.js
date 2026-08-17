@@ -1,5 +1,36 @@
 export const playlist = [
   {
+    id: 'bakhuda-tumhi-ho',
+    title: 'Bakhuda Tumhi Ho',
+    artist: 'Atif Aslam, Alka Yagnik',
+    youtubeId: 'PP7WOMnT288',
+  },
+  {
+    id: 'bheegi-si-bhaagi-si',
+    title: 'Bheegi Si Bhaagi Si',
+    artist: 'Mohit Chauhan, Antara Mitra',
+    youtubeId: 'yHWPO9DDnsk',
+  },
+  {
+    id: 'tum-mile',
+    title: 'Tum Mile',
+    artist: 'Neeraj Shridhar',
+    youtubeId: 'UcqI3uBKgTg',
+  },
+  {
+    id: 'is-this-love',
+    title: 'Is This Love',
+    artist: 'Mohit Chauhan, Shreya Ghoshal',
+    youtubeId: 'ydWsfNb4GME',
+  },
+  {
+    id: 'dildaara',
+    title: 'Dildaara',
+    artist: 'Shafqat Amanat Ali, Vishal Dadlani, Shekhar Ravjiani, Clinton Cerejo',
+    youtubeId: 'TTQePTDfUbQ',
+  },
+
+  {
     id: 'tum-se-hi',
     title: 'Tum Se Hi',
     artist: 'Mohit Chauhan',
@@ -17,4 +48,76 @@ export const playlist = [
     artist: 'Rahat Fateh Ali Khan',
     youtubeId: 'ehqN6oTpmb8',
   },
-]
+  {
+    id: 'tu-jaane-na',
+    title: 'Tu Jaane Na',
+    artist: 'Atif Aslam',
+    youtubeId: 'EHCG8kno2Lg',
+  },
+  {
+    id: 'tera-hone-laga-hoon',
+    title: 'Tera Hone Laga Hoon',
+    artist: 'Atif Aslam, Alisha Chinai',
+    youtubeId: 'rTuxUAuJRyY',
+  },
+  {
+    id: 'iktara',
+    title: 'Iktara',
+    artist: 'Kavita Seth',
+    youtubeId: 'ZlOZktsODpA',
+  },
+  {
+    id: 'bahara',
+    title: 'Bahara',
+    artist: 'Shreya Ghoshal, Sona Mohapatra',
+    youtubeId: '7N74i_rAfFE',
+  },
+  {
+    id: 'tujh-mein-rab-dikhta-hai',
+    title: 'Tujh Mein Rab Dikhta Hai',
+    artist: 'Roop Kumar Rathod',
+    youtubeId: 'qoq8B8ThgEM',
+  },
+  {
+    id: 'teri-ore',
+    title: 'Teri Ore',
+    artist: 'Rahat Fateh Ali Khan, Shreya Ghoshal',
+    youtubeId: 'CWfCp96-yck',
+  },
+  {
+    id: 'tujhe-bhula-diya',
+    title: 'Tujhe Bhula Diya',
+    artist: 'Mohit Chauhan, Shekhar Ravjiani, Shruti Pathak',
+    youtubeId: '-Hb2DeHvvEg',
+  },
+  {
+    id: 'khaabon-ke-parinday',
+    title: 'Khaabon Ke Parinday',
+    artist: 'Alyssa Mendonsa, Mohit Chauhan',
+    youtubeId: 'xZAXVM1rSbk',
+  },
+  {
+    id: 'dil-kyun-yeh-mera',
+    title: 'Dil Kyun Yeh Mera',
+    artist: 'KK',
+    youtubeId: 'maKDIvUVkQo',
+  },
+  {
+    id: 'dhan-te-nan',
+    title: 'Dhan Te Nan',
+    artist: 'Sukhwinder Singh, Vishal Dadlani, Robert Bob Omulo',
+    youtubeId: 'AKF2whlGnr4',
+  },
+  {
+    id: 'dhunki',
+    title: 'Dhunki',
+    artist: 'Neha Bhasin',
+    youtubeId: 'WG6qKDoidmg',
+  },
+  {
+    id: 'dum-dum',
+    title: 'Dum Dum',
+    artist: 'Benny Dayal, Himani Kapoor',
+    youtubeId: 'w3MMMgxjLFk',
+  },
+];

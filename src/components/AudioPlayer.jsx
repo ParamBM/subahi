@@ -17,11 +17,12 @@ function formatTime(seconds) {
 }
 
 // Spinning disc — uses the YouTube thumbnail, spins when playing
-function Disc({ youtubeId, isPlaying, title }) {
+function Disc({ youtubeId, isPlaying, isBuffering, title }) {
   const thumb = `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`
   return (
-    <div className="disc" data-playing={isPlaying} aria-hidden="true">
+    <div className="disc" data-playing={isPlaying && !isBuffering} aria-hidden="true">
       <img src={thumb} alt={title} />
+      {isBuffering && <span className="disc-loader" />}
       {/* Centre hole — like a vinyl record */}
       <span className="disc-hole" />
     </div>
@@ -63,7 +64,7 @@ export function AudioPlayer({ tracks }) {
     [tracks.length],
   )
 
-  const { currentTime, duration, hasError, isPlaying, isReady, pause, play } =
+  const { currentTime, duration, hasError, isBuffering, isPlaying, isReady, pause, play } =
     useYouTubePlayer({
       enabled: true,
       mountId: PLAYER_ID,
@@ -84,7 +85,12 @@ export function AudioPlayer({ tracks }) {
       <div className="audio-source" aria-hidden="true" id={PLAYER_ID} />
 
       {/* Spinning disc — leftmost */}
-      <Disc youtubeId={track.youtubeId} isPlaying={isPlaying} title={track.title} />
+      <Disc
+        youtubeId={track.youtubeId}
+        isPlaying={isPlaying}
+        isBuffering={isBuffering}
+        title={track.title}
+      />
 
       {/* Track info */}
       <div className="track-info">

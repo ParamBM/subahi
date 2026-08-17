@@ -293,6 +293,22 @@
   pointer-events: none;
 }
 
+/* iOS-style loading spinner over the disc while buffering */
+.disc-loader {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  animation: disc-load-spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.25); /* darkens the thumbnail slightly while loading */
+}
+
+@keyframes disc-load-spin {
+  to { transform: rotate(360deg); }
+}
+
 @keyframes disc-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }

@@ -9,6 +9,7 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
   const trackRef = useRef(track)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isReady, setIsReady] = useState(false)
+  const [isBuffering, setIsBuffering] = useState(false)
   const [hasError, setHasError] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -44,15 +45,19 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
               if (event.data === PLAYER_STATES.PLAYING) {
                 setHasError(false)
                 setIsPlaying(true)
+                setIsBuffering(false)
               }
-              if (event.data === PLAYER_STATES.PAUSED) setIsPlaying(false)
+              if (event.data === PLAYER_STATES.PAUSED) {
+                setIsPlaying(false)
+                setIsBuffering(false)
+              }
               if (event.data === PLAYER_STATES.BUFFERING) {
                 setIsPlaying(false)
-                setCurrentTime(0)
-                setDuration(0)
+                setIsBuffering(true)
               }
               if (event.data === PLAYER_STATES.ENDED) {
                 setIsPlaying(false)
+                setIsBuffering(false)
                 callbacksRef.current.onEnded()
               }
             },
@@ -95,5 +100,5 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
   const play = useCallback(() => playerRef.current?.playVideo(), [])
   const pause = useCallback(() => playerRef.current?.pauseVideo(), [])
 
-  return { currentTime, duration, hasError, isPlaying, isReady, pause, play }
+  return { currentTime, duration, hasError, isBuffering, isPlaying, isReady, pause, play }
 }
