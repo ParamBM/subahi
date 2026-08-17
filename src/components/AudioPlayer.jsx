@@ -54,7 +54,6 @@ function Waveform({ isPlaying }) {
 
 export function AudioPlayer({ tracks }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [hasStarted, setHasStarted] = useState(false)
   const track = tracks[currentIndex]
 
   const moveTrack = useCallback(
@@ -66,7 +65,7 @@ export function AudioPlayer({ tracks }) {
 
   const { currentTime, duration, hasError, isPlaying, isReady, pause, play } =
     useYouTubePlayer({
-      enabled: hasStarted,
+      enabled: true,
       mountId: PLAYER_ID,
       onEnded: () => moveTrack(1),
       onError: () => moveTrack(1),
@@ -74,7 +73,6 @@ export function AudioPlayer({ tracks }) {
     })
 
   const togglePlayback = () => {
-    if (!hasStarted) { setHasStarted(true); return }
     isPlaying ? pause() : play()
   }
 
@@ -112,7 +110,7 @@ export function AudioPlayer({ tracks }) {
       <div className="audio-controls">
         <button
           aria-label="Previous song"
-          disabled={!hasStarted || !isReady}
+          disabled={!isReady}
           onClick={() => moveTrack(-1)}
           type="button"
         >
@@ -134,7 +132,7 @@ export function AudioPlayer({ tracks }) {
 
         <button
           aria-label="Next song"
-          disabled={!hasStarted || !isReady}
+          disabled={!isReady}
           onClick={() => moveTrack(1)}
           type="button"
         >

@@ -33,12 +33,12 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
           height: '1',
           width: '1',
           videoId: trackRef.current.youtubeId,
-          playerVars: { autoplay: 1, controls: 0, disablekb: 1, fs: 0, playsinline: 1, rel: 0 },
+          playerVars: { autoplay: 0, controls: 0, disablekb: 1, fs: 0, playsinline: 1, rel: 0 },
           events: {
             onReady: (event) => {
               if (isDisposed) return
               setIsReady(true)
-              event.target.loadVideoById(trackRef.current.youtubeId)
+              event.target.cueVideoById(trackRef.current.youtubeId)
             },
             onStateChange: (event) => {
               if (event.data === PLAYER_STATES.PLAYING) {
