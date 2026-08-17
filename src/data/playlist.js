@@ -27,7 +27,7 @@ export const playlist = [
     id: 'dildaara',
     title: 'Dildaara',
     artist: 'Shafqat Amanat Ali, Vishal Dadlani, Shekhar Ravjiani, Clinton Cerejo',
-    youtubeId: 'p9aW105LmEA',
+    youtubeId: 'gQ5qVtoLMk4',
   },
 
   {
