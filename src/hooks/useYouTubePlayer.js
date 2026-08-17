@@ -100,7 +100,10 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
 
   const play = useCallback(() => playerRef.current?.playVideo(), [])
   const pause = useCallback(() => playerRef.current?.pauseVideo(), [])
-  const loadTrack = useCallback((youtubeId) => playerRef.current?.loadVideoById(youtubeId), [])
+  const loadTrack = useCallback((youtubeId) => {
+    playerRef.current?.loadVideoById(youtubeId)
+    playerRef.current?.playVideo()
+  }, [])
 
   return { currentTime, duration, hasError, isBuffering, isPlaying, isReady, pause, play, loadTrack }
 }

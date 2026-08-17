@@ -27,7 +27,7 @@ export const playlist = [
     id: 'dildaara',
     title: 'Dildaara',
     artist: 'Shafqat Amanat Ali, Vishal Dadlani, Shekhar Ravjiani, Clinton Cerejo',
-    youtubeId: 'TTQePTDfUbQ',
+    youtubeId: 'p9aW105LmEA',
   },
 
   {
@@ -119,5 +119,11 @@ export const playlist = [
     title: 'Dum Dum',
     artist: 'Benny Dayal, Himani Kapoor',
     youtubeId: 'w3MMMgxjLFk',
+  },
+  {
+    id: 'tumse-hi-tumse',
+    title: 'Tumse Hi Tumse',
+    artist: 'Shekhar Ravjiani, Caralisa Monteiro',
+    youtubeId: 'KWCLOpaZeLc',
   },
 ];

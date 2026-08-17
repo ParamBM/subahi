@@ -68,13 +68,11 @@ export function AudioPlayer({ tracks }) {
 
   const moveTrack = useCallback(
     (direction) => {
-      setCurrentIndex((i) => {
-        const nextIdx = (i + direction + tracks.length) % tracks.length
-        loadTrack(tracks[nextIdx].youtubeId)
-        return nextIdx
-      })
+      const nextIdx = (currentIndex + direction + tracks.length) % tracks.length
+      loadTrack(tracks[nextIdx].youtubeId)
+      setCurrentIndex(nextIdx)
     },
-    [tracks, loadTrack],
+    [currentIndex, tracks, loadTrack],
   )
 
   const togglePlayback = () => {
