@@ -3,7 +3,7 @@ export const playlist = [
     id: 'bakhuda-tumhi-ho',
     title: 'Bakhuda Tumhi Ho',
     artist: 'Atif Aslam, Alka Yagnik',
-    youtubeId: 'PP7WOMnT288',
+    youtubeId: '-kI769Xigik',
   },
   {
     id: 'bheegi-si-bhaagi-si',
