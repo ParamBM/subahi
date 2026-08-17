@@ -437,11 +437,22 @@
   transition: background-color 140ms ease, color 140ms ease, transform 140ms ease;
 }
 
-.audio-controls button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+@media (hover: hover) {
+  .audio-controls button:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+  
+  .audio-controls button.main-control:hover:not(:disabled) {
+    background: #fff;
+    color: #1a0a02;
+    transform: scale(1.06);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
+  }
 }
+
 .audio-controls button:active:not(:disabled) { transform: scale(0.92); }
+.audio-controls button.main-control:active:not(:disabled) { transform: scale(0.96); }
 .audio-controls button:disabled { opacity: 0.35; cursor: default; }
 
 .audio-controls .main-control {
@@ -451,13 +462,6 @@
   color: #1a0a02;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   transition: transform 140ms ease, box-shadow 140ms ease;
-}
-
-.audio-controls .main-control:hover {
-  background: #fff;
-  color: #1a0a02;
-  transform: scale(1.06);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
 }
 
 .player-status {
