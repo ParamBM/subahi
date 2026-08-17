@@ -32,6 +32,7 @@ export function useYouTubePlayer({ enabled, mountId, onEnded, onError, track }) 
           height: '1',
           width: '1',
           videoId: trackRef.current.youtubeId,
+          host: 'https://www.youtube-nocookie.com',
           playerVars: { autoplay: 0, controls: 0, disablekb: 1, fs: 0, playsinline: 1, rel: 0 },
           events: {
             onReady: (event) => {
