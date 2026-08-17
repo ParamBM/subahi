@@ -6,7 +6,8 @@ import { usePresence } from './hooks/usePresence'
 import './App.css'
 
 function formatPresence(count) {
-  if (count === null) return '1,284 people remembering'
+  if (count === null) return null
+  if (count === 0) return "No one's remembering"
   if (count === 1) return '1 person remembering'
   return `${count.toLocaleString()} people remembering`
 }
