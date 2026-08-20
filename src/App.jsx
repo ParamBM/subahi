@@ -33,7 +33,12 @@ function App() {
 
       {/* Top bar: clock | presence | share */}
       <div className="topbar">
-        <span className="topbar-clock">{clock}</span>
+        <span className="topbar-clock">
+          {clock.hours}
+          <span className="clock-colon">:</span>
+          {clock.minutes}
+          <span className="clock-period">&thinsp;{clock.period}</span>
+        </span>
 
         <div className="presence-counter" aria-live="polite">
           <span className="presence-dot" aria-hidden="true">

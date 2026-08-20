@@ -1,26 +1,23 @@
 import { useEffect, useState } from 'react'
 
+function getClockParts() {
+  const now = new Date()
+  const raw = now.toLocaleTimeString('en-IN', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  }).toUpperCase()
+  // raw is like "02:37 AM" — split on the space to get time and period
+  const [timePart, period] = raw.split(' ')
+  const [hours, minutes] = timePart.split(':')
+  return { hours, minutes, period }
+}
+
 export function useClock() {
-  const [time, setTime] = useState(() => {
-    const now = new Date()
-    return now.toLocaleTimeString('en-IN', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true,
-    }).toUpperCase()
-  })
+  const [parts, setParts] = useState(getClockParts)
 
   useEffect(() => {
-    const tick = () => {
-      const now = new Date()
-      setTime(
-        now.toLocaleTimeString('en-IN', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: true,
-        }).toUpperCase(),
-      )
-    }
+    const tick = () => setParts(getClockParts())
 
     // Align to the next full minute boundary
     const msToNextMinute = (60 - new Date().getSeconds()) * 1000
@@ -33,5 +30,5 @@ export function useClock() {
     return () => clearTimeout(initial)
   }, [])
 
-  return time
+  return parts
 }
